@@ -31,6 +31,15 @@ target_size <- c(300,200)
 
 
 ## Constructing the model ----
+
+conv_base <- application_vgg19(
+  weights = "imagenet",
+  include_top = FALSE, #Do we want the densely connected layers?
+  input_shape = c(300, 200, 3)
+)
+
+conv_base
+
 model <- keras_model_sequential() %>% 
   layer_conv_2d(filters = 64, kernel_size = c(3, 3), activation = "relu", 
                 input_shape = c(300, 200, 3)) %>% 
